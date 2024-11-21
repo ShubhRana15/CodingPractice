@@ -1,12 +1,14 @@
+# Tool to create a to do list for user using CLI 
+
 import argparse
 import os
 
 
 def create_parser():
-    parser = argparse.ArgumentParser(description="Command-line Todo List App")
-    parser.add_argument("-a", "--add", metavar="", help="Add a new task")
-    parser.add_argument("-l", "--list", action="store_true", help="List all tasks")
-    parser.add_argument("-r", "--remove", metavar="", help="Remove a task by index")
+    parser = argparse.ArgumentParser(description="CLI Todo List App")
+    parser.add_argument("-a", "--add", metavar="", help="Add/append a new task")
+    parser.add_argument("-l", "--list", action="store_true", help="List all available tasks")
+    parser.add_argument("-r", "--remove", metavar="", help="Remove a task using index")
     return parser
 
 
@@ -22,7 +24,7 @@ def list_tasks():
             for index, task in enumerate(tasks, start=1):
                 print(f"{index}. {task.strip()}")
     else:
-        print("No tasks found.")
+        print("List is Empty")
 
 
 def remove_task(index):
@@ -33,9 +35,9 @@ def remove_task(index):
             for i, task in enumerate(tasks, start=1):
                 if i != index:
                     file.write(task)
-        print("Task removed successfully.")
+        print("Task removed from the list successfully.")
     else:
-        print("No tasks found.")
+        print("List is empty")
 
 
 def main():
